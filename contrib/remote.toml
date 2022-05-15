@@ -1,0 +1,13 @@
+debug=true
+
+[proxy]
+    [proxy.openapi]
+        enabled = true
+    [proxy.openapi.listen]
+        addr = "0.0.0.0:82"
+    [proxy.openapi.remote]
+        addr = "127.0.0.1:81"
+        tls = true
+        ca = "./certs/client.pem"
+        privFile = "./certs/server.pem"
+        pubFile = "./certs/server.key"

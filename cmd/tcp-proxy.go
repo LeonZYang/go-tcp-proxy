@@ -37,7 +37,7 @@ EXIT:
 			break EXIT
 		case syscall.SIGHUP:
 			log.Println("receive reload signal")
-			proxy.Reload()
+			//proxy.Reload()
 		default:
 			break EXIT
 		}

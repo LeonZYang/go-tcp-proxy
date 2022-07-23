@@ -4,8 +4,9 @@
 TCP代理服务，可以实现对端通讯，并且是TLS加密
 
 ### 编译和安装
-```bash
-make```
+```shell
+# make
+```
 编译后的文件在bin/tcp-proxy
 
 ### 使用方法

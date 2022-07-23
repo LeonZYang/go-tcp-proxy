@@ -24,7 +24,8 @@ debug=true
         privFile = "./certs/server.pem"
         pubFile = "./certs/server.key"
     [proxy.openapi.remote]
-        addr = "127.0.0.1:80"```
+        addr = "127.0.0.1:80"
+ ```
 
 * proxy.openapi.listen 表示本地监控的信息
 * proxy.openapi.remote 表示远端信息

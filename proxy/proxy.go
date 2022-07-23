@@ -19,7 +19,7 @@ type Proxy struct {
 	erred         bool
 	errsig        chan bool
 
-	// Settings
+	// Nagles
 	Nagles bool
 
 	exitedChan chan struct{}
@@ -53,7 +53,6 @@ func (p *Proxy) Start() {
 	}
 	defer p.rconn.Close()
 
-	//nagles?
 	if p.Nagles {
 		if conn, ok := p.lconn.(setNoDelayer); ok {
 			conn.SetNoDelay(true)
@@ -63,7 +62,6 @@ func (p *Proxy) Start() {
 		}
 	}
 
-	//display both ends
 	log.Printf("open connection, local: %v, remote: %v\n", p.local.Addr, p.remote.Addr)
 	//bidirectional copy
 	go p.pipe(p.lconn, p.rconn)
@@ -112,7 +110,7 @@ func (p *Proxy) pipe(src, dst net.Conn) {
 		}
 		b := buff[:n]
 		_ = dst.SetWriteDeadline(time.Now().Add(2 * time.Minute))
-		//write out result
+
 		n, err = dst.Write(b)
 		if err != nil {
 			p.err("write failed '%s'\n", err)
